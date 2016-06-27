@@ -16,16 +16,21 @@
  */
 Route::group(['prefix' => 'administracao', 'middleware' => [] , 'web'], function($route){
     
-    //Estilos Musicais
-    $route->get('/estilos','Painel\EstiloController@index');
-    $route->get('/estilo/cadastrar','Painel\EstiloController@cadastrar');
-    $route->post('/estilo/cadastrar','Painel\EstiloController@cadastrarEstilo');
-    $route->get('/estilo/editar/{id}','Painel\EstiloController@editar');
+    $route->get('palestrantes','Administracao\PalestranteController@index');
+    $route->get('palestrante/cadastrar','Administracao\PalestranteController@formCadastro');
+    $route->post('palestrante/cadastrar','Administracao\PalestranteController@cadGo');
+    $route->get('palestrante/editar/{id}','Administracao\PalestranteController@edit');
+    $route->post('palestrante/editar/{id}','Administracao\PalestranteController@editGo');
+    $route->get('palestrante/deletar/{id}','Administracao\PalestranteController@delete');
+    $route->post('palestrante/pesquisar','Administracao\PalestranteController@pesquisar');
     
     //Rota inicial da Dashboard
     $route->get('/','Painel\PainelController@index');
     
 });
+
+
+
 
 Route::get('/', function () {
     return view('welcome');

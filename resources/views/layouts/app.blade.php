@@ -17,13 +17,16 @@
         <link href="{{url('/vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet">
 
         <!-- Custom Theme Style -->
-        <link href="{{url('/build/css/custom.min.css')}}" rel="stylesheet">
+        <link href="{{url('/build/css/custom.css')}}" rel="stylesheet">
+       
+        <!-- jQuery -->
+        <script src="{{url('/vendors/jquery/dist/jquery.min.js')}}"></script> 
     </head>
 
     <body class="nav-md">
         <div class="container body">
             <div class="main_container">
-                <div class="col-md-3 left_col">
+                <div class="col-md-3 left_col menu_fixed">
                     <div class="left_col scroll-view">
                         <div class="navbar nav_title" style="border: 0;">
                             <a href="{{url('')}}" class="site_title"><i class="fa fa-calendar"></i> <span>PHeventos</span></a>
@@ -38,7 +41,8 @@
                             <div class="menu_section">
                                 <!-- <h3>General</h3> -->
                                 <ul class="nav side-menu">
-                                    <li><a href="{{url('/administracao/eventos')}}" ><i class="fa fa-home"></i> Eventos <span class="fa fa-chevron-down"></span></a></li>
+                                    <li><a href="{{url('/administracao/eventos')}}" ><i class="fa fa-home"></i> Eventos <span class="fa fa-chevron-right"></span></a></li>
+                                    <li><a href="{{url('/administracao/palestrantes')}}" ><i class="fa fa-home"></i> Palestrantes <span class="fa fa-chevron-right"></span></a></li>
                                     <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
                                             <li><a href="form.html">General Form</a></li>
@@ -194,8 +198,10 @@
 
                 <!-- page content -->
                 <div class="right_col" role="main">
+                    <div class="container">
+                        @yield('content') 
+                    </div>    
 
-                    @yield('content')
 
                 </div>
                 <!-- /page content -->
@@ -210,9 +216,7 @@
                 <!-- /footer content -->
             </div>
         </div>
-
-        <!-- jQuery -->
-        <script src="{{url('/vendors/jquery/dist/jquery.min.js')}}"></script>
+        
         <!-- Bootstrap -->
         <script src="{{url('/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
         <!-- FastClick -->
@@ -225,8 +229,10 @@
         <script src="{{url('/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js')}}"></script>
         <!-- iCheck -->
         <script src="{{url('/vendors/iCheck/icheck.min.js')}}"></script>
+        <!-- jQuery Mask Plugin -->
+        <script src="{{url('/vendors/jquery-mask/dist/jquery.mask.min.js')}}"></script>
         <!-- Custom Theme Scripts -->
         <script src="{{url('/build/js/custom.min.js')}}"></script>
-
+ 
     </body>  
 </html>
