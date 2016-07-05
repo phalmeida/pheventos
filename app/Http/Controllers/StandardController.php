@@ -48,7 +48,7 @@ class StandardController extends BaseController
      * 
      * @return type
      */
-    public function edit($id) 
+    public function formEditar($id) 
     {
         //Recupera o estilo pelo ID
         $data = $this->model->find($id);
@@ -60,7 +60,7 @@ class StandardController extends BaseController
      * 
      * @return type
      */
-    public function editGo($id) 
+    public function salvarEdicao($id) 
     {
         //Recupera os dados do form
         $dadosForm = $this->request->all();
@@ -100,7 +100,7 @@ class StandardController extends BaseController
      * 
      * @return type
      */
-    public function cadGo()
+    public function salvarCadastro()
     {
         //Recupera os dados do formulário    
         $dadosForm = $this->request->all();

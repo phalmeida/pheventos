@@ -11,6 +11,8 @@
 
         <!-- Bootstrap -->
         <link href="{{url('/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+        <!-- dataTables -->
+        <link href="{{url('/vendors/datatables/jquery.dataTables.min.css')}}" rel="stylesheet">
         <!-- Font Awesome -->
         <link href="{{url('/vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
         <!-- iCheck -->
@@ -221,6 +223,8 @@
         <script src="{{url('/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
         <!-- FastClick -->
         <script src="{{url('/vendors/fastclick/lib/fastclick.js')}}"></script>
+        <!-- dataTables -->
+        <script src="{{url('/vendors/datatables/jquery.dataTables.min.js')}}"></script>
         <!-- NProgress -->
         <script src="{{url('/vendors/nprogress/nprogress.js')}}"></script>
         <!-- gauge.js -->

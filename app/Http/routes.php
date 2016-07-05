@@ -15,14 +15,27 @@
  * Administração dos eventos
  */
 Route::group(['prefix' => 'administracao', 'middleware' => [] , 'web'], function($route){
+
+
+    /**
+     * Eventos
+     */
+    $route->get('eventos','Administracao\EventoController@index');
+    $route->get('evento/cadastrar','Administracao\EventoController@formCadastro');
     
+    
+    /**
+     * Palestrantes
+     */
     $route->get('palestrantes','Administracao\PalestranteController@index');
     $route->get('palestrante/cadastrar','Administracao\PalestranteController@formCadastro');
-    $route->post('palestrante/cadastrar','Administracao\PalestranteController@cadGo');
-    $route->get('palestrante/editar/{id}','Administracao\PalestranteController@edit');
-    $route->post('palestrante/editar/{id}','Administracao\PalestranteController@editGo');
+    $route->post('palestrante/cadastrar','Administracao\PalestranteController@salvarCadastro');
+    $route->get('palestrante/editar/{id}','Administracao\PalestranteController@formEditar');
+    $route->post('palestrante/editar/{id}','Administracao\PalestranteController@salvarEdicao');
     $route->get('palestrante/deletar/{id}','Administracao\PalestranteController@delete');
     $route->post('palestrante/pesquisar','Administracao\PalestranteController@pesquisar');
+    
+    
     
     //Rota inicial da Dashboard
     $route->get('/','Painel\PainelController@index');
