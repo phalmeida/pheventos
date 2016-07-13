@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.administrador')
 
 @section('content')
 <div class="page-title">
@@ -34,20 +34,20 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Nome</th>
-                                <th>E-mail</th>
-                                <th>Telefone</th>
+                                <th>Título</th>
+                                <th>Descrição</th>
+                                <th>Palestrante</th>
                                 <th>#</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($data as $palestrante)
+                            @forelse($data as $evento)
                             <tr>
-                                <td>{{$palestrante->nome}}</td>
-                                <td>{{$palestrante->email}}</td>
-                                <td>{{$palestrante->telefone}}</td>
+                                <td>{{$evento->titulo}}</td>
+                                <td>{{$evento->descricao}}</td>
+                                <td>{{$evento->palestrante->nome}}</td>
                                 <td>
-                                    <a href="{{url("administracao/palestrante/editar/$palestrante->id")}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                    <a href="{{url("administracao/evento/editar/$evento->id")}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit </a>
                                     <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
                                 </td>
                             </tr>

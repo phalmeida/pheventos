@@ -84,7 +84,7 @@ class PalestranteController extends StandardController
     }
 
     /**
-     * Editando o estilo musical
+     * Editando o Palestrante
      * 
      * @return type
      */

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Authenticate
 {
+
     /**
      * Handle an incoming request.
      *
@@ -21,10 +22,15 @@ class Authenticate
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
-                return redirect()->guest('login');
+                if ($guard == 'admin') { //Caso seja um administrador
+                    return redirect()->guest('admin/login');
+                } else {//Caso seja um usuário normal
+                    return redirect()->guest('login');
+                }
             }
         }
 
         return $next($request);
     }
+
 }

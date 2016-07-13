@@ -1,0 +1,226 @@
+
+/*articles*/
+.standard-article-header {
+    margin: 0 0 10px;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.standard-article-header .label {
+    position: relative;
+    top: -4px;
+    padding: 0px 4px 1px;
+    margin-left: 2px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+.list-toolbar {
+    margin-left: 0;
+    margin-bottom: 10px;
+    color: #EB9E68;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: 11px;
+}
+.list-toolbar .fa {
+    margin-right: 2px;
+    color: #FA5456;
+}
+.standard-article-image {
+    display: block;
+    position: relative;
+}
+.standard-article-date {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 50px;
+    background: rgba(0,0,0,0.8);
+    padding: 8px 0;
+    color: #eee;
+    font-size: 18px;
+    line-height: 16px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.standard-article-date span {
+    display: block;
+}
+.standard-article-date span span {
+    display: inline-block;
+    padding: 0 4px;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 2px;
+}
+.standard-article-date span.day {
+    font-size: 26px;
+    line-height: 26px;
+}
+.standard-article-date span.day-smaller {
+    font-size: 18px;
+    line-height: 26px;
+}
+.standard-article-date span.month {
+    font-size: 16px;
+    line-height: 16px;
+}
+.standard-article-date span.year {
+    font-size: 18px;
+    line-height: 18px;
+}
+.standard-author {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 2px 5px;
+    color: #eee;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    text-align: right;
+}
+.standard-author strong {
+    font-weight: 300;
+    margin-left: 2px;
+}
+.rating {
+    display: block;
+    overflow: hidden;
+    padding: 3px 0;
+    line-height: 1px;
+}
+.rating .star {
+    float: left;
+    padding: 0 2px;
+    color: #EB9E68;
+    font-size: 16px;
+    -webkit-text-shadow: 1px 1px 1px #000;
+            text-shadow: 1px 1px 1px #000;
+}
+.rating .star.positive {
+    color: #FA5456;
+}
+.rating .text {
+    line-height: 14px;
+    padding-left: 5px;
+}
+.standard-article-image .rating {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    z-index: 10;
+}
+.event-status {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    height: 100%;
+    width: 3px;
+    -webkit-transition: 0.3s ease;
+            transition: 0.3s ease;
+}
+.event-status-lg {
+    width: 6px;
+}
+:hover > .event-status{
+    width: 100%;
+    opacity: 0.25;
+}
+.item-heading {
+    text-transform: uppercase;
+    font-size: 23px;
+    margin: 0;
+    margin-bottom: 20px;
+}
+.item-heading .item-number {
+    position: relative;
+    vertical-align: middle;
+    font-size: 15px;
+    color: #FA5456;
+    line-height: 1;
+}
+
+.standard-article-image .standard-article-date,
+.standard-article-image .standard-author {
+    -webkit-transition: 0.3s linear;
+            transition: 0.3s linear;
+}
+.standard-article-image .standard-article-date span span {
+    -webkit-transition: 0.3s border-color linear;
+            transition: 0.3s border-color linear;
+}
+.standard-article-image:hover .standard-article-date,
+.standard-article-image:hover .standard-author {
+    color: #FA5456;
+}
+.standard-article-image:hover .standard-article-date span span {
+    border-color: #FA5456;
+}
+.standard-article-item.event p,
+.standard-article-item.album p {
+    margin: 0 0 5px 0;
+}
+.standard-article-item.event p .fa,
+.standard-article-item.event p .glyphicon,
+.standard-article-item.album p .fa,
+.standard-article-item.album p .glyphicon {
+    margin-right: 2px;
+}
+.standard-article-item.event .description {
+    color: #888;
+    font-style: italic;
+}
+.standard-article-item.event.event-date .standard-article-image {
+    display: inline-block;
+    float: left;
+}
+.standard-article-item.event.event-date .standard-article-date {
+    display: inline-block;
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 60px;
+    padding: 16px 0;
+}
+.standard-article-item.event.event-date .standard-article-header,
+.standard-article-item.event.event-date p {
+    margin-left: 80px;
+}
+.standard-article-item.album .rating {
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    margin-bottom: 10px;
+}
+.standard-article-item.album.album-xs .rating {
+    margin-bottom: 5px;
+}
+.standard-article-item.album .standard-article-header {
+    margin-bottom: 5px;
+}
+.standard-article-item.album.album-xs .standard-article-header {
+    margin-bottom: 2px;
+}
+.standard-article-item.top-list-item .progress {
+    margin-bottom: 5px;
+}
+.standard-article-item.smaller hr {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.standard-article-item.smaller .standard-article-header {
+    margin-bottom: 0;
+}
+.standard-article-item.tile .standard-article-header {
+    margin-top: 10px;
+}
+.standard-article-item.tile p {
+    font-size: 12px;
+    text-align: justify;
+}
+.standard-box .article-item-image {
+    margin: -15px;
+}
