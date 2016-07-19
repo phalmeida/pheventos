@@ -45,6 +45,7 @@
                                 <ul class="nav side-menu">
                                     <li><a href="{{url('/administracao/eventos')}}" ><i class="fa fa-home"></i> Eventos <span class="fa fa-chevron-right"></span></a></li>
                                     <li><a href="{{url('/administracao/palestrantes')}}" ><i class="fa fa-home"></i> Palestrantes <span class="fa fa-chevron-right"></span></a></li>
+                                    <li><a href="{{url('/administracao/presenca')}}" ><i class="fa fa-home"></i> Lista de presença <span class="fa fa-chevron-right"></span></a></li>
                                     <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
                                             <li><a href="form.html">General Form</a></li>
@@ -111,7 +112,7 @@
                                 @else
                                 <li class="">
                                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="images/img.jpg" alt="">{{ Auth::user()->name }}
+                                        <img src="{{url('images/img.jpg')}}" alt="">{{ Auth::user()->name }}
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-usermenu pull-right">
