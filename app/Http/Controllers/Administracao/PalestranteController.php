@@ -7,7 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\StandardController;
 use App\Models\Administracao\Palestrante;
 use JansenFelipe\Utils\Utils as Utils;
-use JansenFelipe\Utils\Mask as Mask;
+
 
 class PalestranteController extends StandardController
 {

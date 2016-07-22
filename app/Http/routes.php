@@ -11,9 +11,9 @@
   |
  */
 
-Route::group(['middleware' => 'admin'], function($route) {
+Route::group(['middleware' => 'admin'], function ($route) {
 
-    Route::group(['middleware' => 'auth:admin'], function($route) {
+    Route::group(['middleware' => 'auth:admin'], function ($route) {
         $route->get('/admin', 'AdminController@index');
     });
     $route->get('/admin/login', 'AdminController@login');
@@ -25,8 +25,8 @@ Route::group(['middleware' => 'admin'], function($route) {
 /*
  * Administração dos eventos
  */
-Route::group(['prefix' => 'administracao', 'middleware' => 'auth:admin', 'admin'], function($route) {
-        
+Route::group(['prefix' => 'administracao', 'middleware' => 'auth:admin', 'admin'], function ($route) {
+
     /**
      * Eventos
      */
@@ -47,22 +47,30 @@ Route::group(['prefix' => 'administracao', 'middleware' => 'auth:admin', 'admin'
     $route->get('palestrante/deletar/{id}', 'Administracao\PalestranteController@delete');
     $route->post('palestrante/pesquisar', 'Administracao\PalestranteController@pesquisar');
 
+    /**
+     * Lista de presença
+     */
+    $route->get('presenca', 'Administracao\PresencaController@index');
+    $route->get('presenca/lista/{id_evento}', 'Administracao\PresencaController@listaUsuarios');
+    $route->post('presenca/salvar', 'Administracao\PresencaController@salvarPresenca');
+
     //Rota inicial da Dashboard
     $route->get('/', 'Painel\PainelController@index');
+
 });
 
+Route::group(['prefix' => 'usuario', 'middleware' => 'auth', 'web'], function ($route) {
 
+    //Rota de inscrição do evento
+    $route->get('evento/{id_evento}', 'Usuario\InscricaoController@inscricao');
+    $route->get('eventos', 'Usuario\InscricaoController@eventos');
+    $route->get('evento/cancelar/{id_evento}', 'Usuario\InscricaoController@cancelarInscricao');
 
-
-Route::get('/', function () {
-    return view('welcome');
 });
-
-
 
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
 Route::get('/template', 'HomeController@template');
