@@ -9,7 +9,6 @@
     </h2>
     
     @forelse($eventos as $evento)
-    
     <div class="standard-article-item news">
         <div class="row">
             <div class="col-sm-4">
@@ -20,7 +19,7 @@
                         <span class="year">2015</span>
                     </span>
                     <span class="standard-author"><i class="fa fa-user"></i> <strong>{{ $evento->palestrante->nome }}</strong></span>
-                    <img class="img-responsive" src="images/concert-5-blog.jpg" alt="photo by Martin Fisch">
+                    <img class="img-responsive" src='{{url("images/img{$evento->id}.jpg")}}' alt="photo by Martin Fisch">
                     <span class="rating">
                         <span class="star positive">
                             <span class="glyphicon glyphicon-star"></span>

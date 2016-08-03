@@ -1,6 +1,9 @@
 @extends('layouts.administrador')
 
 @section('content')
+
+    @include('flash::message')
+
     <div class="page-title">
         <div class="title_left">
             <h3>Lista de presença!</h3>
@@ -35,7 +38,6 @@
                                 <thead>
                                 <tr>
                                     <th>Título</th>
-                                    <th>Palestrante</th>
                                     <th>#</th>
                                 </tr>
                                 </thead>
@@ -43,7 +45,6 @@
                                 @forelse($lista_usuario->usuarios as $usuario)
                                     <tr>
                                         <td>{{$usuario->name}}</td>
-                                        <td></td>
                                         <td>
                                             <div class="checkbox">
                                                 <label>
@@ -52,7 +53,7 @@
                                                            @if($usuario->pivot->presenca)
                                                            checked="checked"
                                                             @endif
-                                                    > Presente {{$usuario->pivot->presenca}}
+                                                    > Presente
                                                 </label>
                                             </div>
                                         </td>
@@ -80,5 +81,4 @@
             </div>
         </div>
     </div>
-
 @endsection

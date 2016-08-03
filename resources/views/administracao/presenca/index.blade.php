@@ -35,6 +35,7 @@
                             <tr>
                                 <th>Título</th>
                                 <th>Palestrante</th>
+                                <th class="text-center" >Nª de usuários</th>
                                 <th>#</th>
                             </tr>
                             </thead>
@@ -43,9 +44,15 @@
                                 <tr>
                                     <td>{{$evento->titulo}}</td>
                                     <td>{{$evento->palestrante->nome}}</td>
+                                    <td class="text-center">
+                                        {{count($evento->usuarios)}}
+                                    </td>
                                     <td>
-                                        <a href="{{url("administracao/presenca/lista/$evento->id")}}"
-                                           class="btn btn-primary btn-xs"><i class="fa fa-list-ol"></i> Lista de usuários </a>
+                                        @if( count($evento->usuarios) > 0)
+                                            <a href="{{url("administracao/presenca/lista/$evento->id")}}"
+                                               class="btn btn-primary btn-xs"><i class="fa fa-list-ol"></i> Lista de
+                                                usuários </a>
+                                        @endif
                                     </td>
                                 </tr>
                             @empty

@@ -161,6 +161,11 @@ return [
          */
         Yajra\Datatables\DatatablesServiceProvider::class,
 
+        /*
+         * Easy flash notifications
+         */
+        Laracasts\Flash\FlashServiceProvider::class,
+
     ],
 
     /*

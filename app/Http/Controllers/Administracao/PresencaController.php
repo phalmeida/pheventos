@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\StandardController;
 use App\Models\Administracao\Evento;
 use App\User;
+use App\Models\Administracao\Presenca;
 use Illuminate\Http\Request;
 
 
@@ -14,15 +15,28 @@ class PresencaController extends StandardController
     protected $evento;
     protected $request;
     protected $user;
+    protected $presenca;
 
-
-    public function __construct(Evento $evento, User $user, Request $request)
+    /**
+     * PresencaController constructor.
+     * @param Evento $evento
+     * @param User $user
+     * @param Request $request
+     * @param Presenca $presenca
+     */
+    public function __construct(Evento $evento, User $user, Request $request, Presenca $presenca)
     {
         $this->evento = $evento;
         $this->request = $request;
         $this->user = $user;
+        $this->presenca = $presenca;
     }
 
+    /**
+     * Página principal para realizar presença
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
 
@@ -32,6 +46,12 @@ class PresencaController extends StandardController
 
     }
 
+    /**
+     * Retorna a lista de usuários para realização da presença
+     *
+     * @param $id_evento
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function listaUsuarios($id_evento)
     {
 
@@ -43,24 +63,35 @@ class PresencaController extends StandardController
 
     }
 
+    /**
+     * Responsável por salvar as presença
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function salvarPresenca()
     {
+        //Dados do fomulário -> lista de presença
+        $dados_form = $this->request->all();
 
-        $dadosForm = $this->request->all();
+        $id_evento = $dados_form['id_evento'];
 
-        foreach ($dadosForm['presentes']  as $chave => $valor){
+        $this->presenca
+            ->where('id_evento', '=', $id_evento)
+            ->update(['presenca' => 0]);
 
-        echo $chave . ' - ' . $valor.  '<br>';
+        if (isset($dados_form['presentes'])) {
 
-    }
+            //Realiza a atualização dos presentes
+            $this->presenca
+                ->where('id_evento', '=', $id_evento)
+                ->whereIn('id_user', $dados_form['presentes'])
+                ->update(['presenca' => 1]);
+        }
 
-        $values = array_values($dadosForm);
+        //Retorna a mensagem para o modal
+        flash()->overlay('<h4 class="text-center">Lista salva com sucesso!</h4>', '' ,'success');
 
-        dd($values);
-
-        // $affectedRows = User::where('votes', '>', 100)->update(array('status' => 2));
-
-        return 'teste';
+        return redirect("administracao/presenca/lista/{$id_evento}");
 
     }
 

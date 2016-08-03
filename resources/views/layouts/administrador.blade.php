@@ -238,6 +238,9 @@
         <script src="{{url('/vendors/jquery-mask/dist/jquery.mask.min.js')}}"></script>
         <!-- Custom Theme Scripts -->
         <script src="{{url('/build/js/custom.min.js')}}"></script>
- 
+
+        <script>
+            $('#flash-overlay-modal').modal();
+        </script>
     </body>  
 </html>
