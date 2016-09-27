@@ -52,7 +52,7 @@
                         <i class="fa fa-tags"></i> <a href="#">rock</a>, <a href="#">progressive</a>, <a href="#">concert</a>,
                         <a href="#">stage</a>, <a href="#">live</a>, <a href="#">heavy metal</a>, <a href="#">stage</a>
                     </div>
-                    <p>{{ $evento->descricao }}</p>
+                    <p>{!! $evento->descricao !!} </p>
                     <a class="btn standard-hover-effect bg-red" href="evento/cancelar/{{$evento->id}}">
                         <span class="text">Inscrição</span>
                     </a>

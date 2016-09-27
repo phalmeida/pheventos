@@ -17,6 +17,9 @@ class CreateEventosTable extends Migration
             $table->string('titulo', 100);
             $table->text('descricao');
             $table->string('link_video', 200);
+            $table->string('imagem', 200);
+            $table->integer('numero_vagas');
+            $table->decimal('valor_entrada', 5, 2);
             $table->integer('id_palestrante')->unsigned();
             $table->foreign('id_palestrante')->references('id')->on('palestrantes');
             $table->timestamp('dt_inicio');

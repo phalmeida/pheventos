@@ -50,7 +50,7 @@
                                            class="btn btn-success btn-xs"><i class="fa fa-list"></i> Detalhar </a>
 
                                         <a href="{{url("administracao/evento/editar/$evento->id")}}"
-                                           class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                           class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Editar </a>
 
                                         <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>
                                             Desativar </a>

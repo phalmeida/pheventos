@@ -14,12 +14,12 @@
             <div class="col-sm-4">
                 <a class="standard-article-image" href="">
                     <span class="standard-article-date date-full">
-                        <span class="day"><span>14</span></span>
-                        <span class="month">mar</span>
-                        <span class="year">2015</span>
+                        <span class="day"><span>20</span></span>
+                        <span class="month">Set</span>
+                        <span class="year">2016</span>
                     </span>
                     <span class="standard-author"><i class="fa fa-user"></i> <strong>{{ $evento->palestrante->nome }}</strong></span>
-                    <img class="img-responsive" src='{{url("images/img{$evento->id}.jpg")}}' alt="photo by Martin Fisch">
+                    <img class="img-responsive" src='{{ url("uploads/imagens/eventos/{$evento->imagem}")}}' alt="photo by Martin Fisch">
                     <span class="rating">
                         <span class="star positive">
                             <span class="glyphicon glyphicon-star"></span>
@@ -42,10 +42,10 @@
             <div class="col-sm-8">
                 <h3 class="standard-article-header"><a href="">{{ $evento->titulo }}</a></h3>
                 <div class="list-toolbar">
-                    <a href=""><i class="fa fa-comments"></i> 1 comment </a>
-                    <i class="fa fa-tags"></i> <a href="#">rock</a>, <a href="#">progressive</a>, <a href="#">concert</a>, <a href="#">stage</a>, <a href="#">live</a>, <a href="#">heavy metal</a>, <a href="#">stage</a>
+                    <a href=""><i class="fa fa-comments"></i> 1 comentário </a>
+                    <i class="fa fa-tags"></i> <a href="#">TI</a>, <a href="#">php</a>, <a href="#">tecnologia</a>, <a href="#">rede</a>
                 </div>
-                <p>{{ $evento->descricao }}</p>
+                <p>{!! $evento->descricao !!} </p>
                 <a class="btn standard-hover-effect bg-red" href="{{url("usuario/evento/$evento->id")}}">
                     <span class="text">Inscrição</span>
                 </a>

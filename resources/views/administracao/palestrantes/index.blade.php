@@ -47,8 +47,8 @@
                                 <td>{{$palestrante->email}}</td>
                                 <td>{{$palestrante->telefone}}</td>
                                 <td>
-                                    <a href="{{url("administracao/palestrante/editar/$palestrante->id")}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                    <a href="{{url("administracao/palestrante/editar/$palestrante->id")}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Editar </a>
+                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-ban"></i> Desativar </a>
                                 </td>
                             </tr>
                             @empty
