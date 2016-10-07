@@ -38,8 +38,17 @@ class InscricaoController extends Controller
      */
     public function inscricao($id_evento)
     {
+
         //Evento selecionado
         $evento = $this->evento->find($id_evento);
+
+        $dados = $evento->usuarios()->where('id_user', Auth::user()->id)->get();
+
+        if (count($dados) >= 1){
+
+            return redirect('usuario/eventos')->with('status', 'Usuário já está cadastrado para esse evento!');
+
+        }
 
         //Vincula o usuário ao evento selecionado
         $evento->usuarios()->sync([Auth::user()->id], false);
@@ -81,6 +90,21 @@ class InscricaoController extends Controller
         $eventos = $usuario->eventos()->get();
 
         return view('usuario.index', compact('eventos'));
+
+    }
+
+
+    /**
+     * Lista dos eventos inscritos
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function detalharEvento($id_evento)
+    {
+
+        $evento = $this->evento->find($id_evento);
+
+        dd($evento);
 
     }
 

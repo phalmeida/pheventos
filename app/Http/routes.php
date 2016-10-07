@@ -37,6 +37,13 @@ Route::group(['prefix' => 'administracao', 'middleware' => 'auth:admin', 'admin'
     $route->post('evento/editar/{id}', 'Administracao\EventoController@salvarEdicao');
 
     /**
+     * Anexar Material ao Eventos
+     */
+    $route->get('evento/anexar/{id}', 'Administracao\EventoController@anexarMaterial');
+    $route->post('evento/anexo/inserir', 'Administracao\EventoController@salvarAnexo');
+
+
+    /**
      * Palestrantes
      */
     $route->get('palestrantes', 'Administracao\PalestranteController@index');
@@ -49,6 +56,7 @@ Route::group(['prefix' => 'administracao', 'middleware' => 'auth:admin', 'admin'
 
     /**
      * Lista de presença
+     *
      */
     $route->get('presenca', 'Administracao\PresencaController@index');
     $route->get('presenca/lista/{id_evento}', 'Administracao\PresencaController@listaUsuarios');
@@ -61,10 +69,14 @@ Route::group(['prefix' => 'administracao', 'middleware' => 'auth:admin', 'admin'
 
 Route::group(['prefix' => 'usuario', 'middleware' => 'auth', 'web'], function ($route) {
 
-    //Rota de inscrição do evento
+    /**
+     * Rota de inscrição do evento
+     *
+     */
     $route->get('evento/{id_evento}', 'Usuario\InscricaoController@inscricao');
     $route->get('eventos', 'Usuario\InscricaoController@eventos');
     $route->get('evento/cancelar/{id_evento}', 'Usuario\InscricaoController@cancelarInscricao');
+    $route->get('evento/detalhar/{id_evento}', 'Usuario\InscricaoController@detalharEvento');
 
 });
 

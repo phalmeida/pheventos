@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\StandardController;
 use App\Models\Administracao\Evento;
 use App\Models\Administracao\Palestrante;
+use App\Models\Administracao\Anexo;
 use JansenFelipe\Utils\Utils as Utils;
 use JansenFelipe\Utils\Mask as Mask;
 use Carbon\Carbon as Date;
@@ -19,13 +20,15 @@ class EventoController extends StandardController
     protected $redirectEdit = '/administracao/evento/editar';
     protected $route = '/administracao/eventos';
     protected $request;
+    protected $anexo;
     protected $palestrante;
 
-    public function __construct(Evento $evento, Request $request, Palestrante $palestrante)
+    public function __construct(Evento $evento, Request $request, Palestrante $palestrante,Anexo $anexo)
     {
         $this->model = $evento;
         $this->request = $request;
         $this->palestrante = $palestrante;
+        $this->anexo = $anexo;
     }
 
     /**
@@ -200,6 +203,62 @@ class EventoController extends StandardController
         }
 
     }
+
+
+    public function anexarMaterial($id){
+
+        $evento = $this->model->find($id);
+
+        $arquivos = $this->anexo->where('id_evento',$id)->get();
+
+        return view("{$this->nameView}.anexo" , compact('id' , 'evento' , 'arquivos'));
+
+    }
+
+    public function salvarAnexo(){
+
+        //Recupera os dados do form
+        $dadosForm = $this->request->all();
+
+        if ($this->request->hasFile('arquivo') && $this->request->file('arquivo')->isValid()) {
+
+            //Arquivo de vinda do formulário
+            $arquivo = $this->request->file('arquivo');
+
+            //Caminho da pasta onde as imagens irão ficar
+            $path_arquivo = public_path('uploads/materiais');
+
+            //Nome do arquivo
+            $nomeArquivo = date('YmdHms') . '.' . $arquivo->getClientOriginalExtension();
+
+            $dadosForm['link'] = $nomeArquivo;
+
+            //Faz upload da arquivo
+            $upload = $arquivo->move($path_arquivo, $nomeArquivo);
+
+            if (!$upload)
+                return redirect($this->redirectCad)
+                    ->withErrors(['errors' => 'Falha ao fazer o upload']);
+
+        }
+
+        //Faz o insert
+        $insert = $this->anexo->create($dadosForm);
+
+        //Verifica se deu tudo certo
+        if ($insert) {
+            return back();
+        } else {
+
+            //Retorna as informações do erro.
+            return redirect($this->redirectCad)
+                ->withErrors(['errors' => 'Falha ao cadastrar'])
+                ->withInput();
+        }
+
+
+    }
+
 
 
 }

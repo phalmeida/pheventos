@@ -64,7 +64,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 @if (Auth::guest())
                                 <li><a href="{{ url('/login') }}">Login</a></li>
-                                <li><a href="{{ url('/register') }}">Register</a></li>
+                                <li><a href="{{ url('/register') }}">Criar uma conta</a></li>
                                 @else
                                 <li class="">
                                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -192,6 +192,7 @@
         <script src="{{url('/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js')}}"></script>
         <!-- iCheck -->
         <script src="{{url('/vendors/iCheck/icheck.min.js')}}"></script>
+        <script src="{{url('/vendors/filer/jquery.MultiFile.js')}}"></script>
         <!-- jQuery Mask Plugin -->
         <script src="{{url('/vendors/jquery-mask/dist/jquery.mask.min.js')}}"></script>
         <!-- Custom Theme Scripts -->
@@ -202,7 +203,7 @@
         </script>
         <script>
             tinymce.init({
-                selector:'textarea',
+                selector:'#descricao',
                 language: 'pt_BR',
                 height: 50,
                 plugins: 'image media codesample imagetools',
