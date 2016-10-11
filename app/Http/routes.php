@@ -40,6 +40,7 @@ Route::group(['prefix' => 'administracao', 'middleware' => 'auth:admin', 'admin'
      * Anexar Material ao Eventos
      */
     $route->get('evento/anexar/{id}', 'Administracao\EventoController@anexarMaterial');
+    $route->get('evento/anexar/del/{id}', 'Administracao\EventoController@excluirAnexo');
     $route->post('evento/anexo/inserir', 'Administracao\EventoController@salvarAnexo');
 
 

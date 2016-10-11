@@ -259,6 +259,33 @@ class EventoController extends StandardController
 
     }
 
+    public function excluirAnexo($id){
+
+        $anexo = $this->anexo->find($id);
+
+        //Caminho da pasta onde as imagens irão ficar
+        $path_arquivo = public_path('uploads/materiais/');
+
+
+        \File::delete($path_arquivo.$anexo->link);
+
+        //Faz o insert
+        $delete = $this->anexo->destroy($id);
+
+        //Verifica se deu tudo certo
+        if ($delete) {
+            return redirect($this->route);
+        } else {
+
+            //Retorna as informações do erro.
+            return redirect($this->route)
+                ->withErrors(['errors' => 'Falha ao Excluir o Anexo!'])
+                ->withInput();
+        }
+
+
+    }
+
 
 
 }

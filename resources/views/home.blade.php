@@ -42,7 +42,7 @@
                 <h3 class="standard-article-header"><a href="">{{ $evento->titulo }}</a></h3>
                 <div class="list-toolbar">
                     <a href=""><i class="fa fa-comments"></i> 1 comentário </a>
-                    <i class="fa fa-tags"></i> <a href="#">TI</a>, <a href="#">php</a>, <a href="#">tecnologia</a>, <a href="#">rede {{date('d/m/Y', strtotime($evento->dt_inicio))}} </a>
+                    <i class="fa fa-tags"></i> <a href="#">TI</a>, <a href="#">php</a>, <a href="#">tecnologia</a>, <a href="#">rede </a>
                 </div>
                 <p>{!! $evento->descricao !!} </p>
                 <a class="btn standard-hover-effect bg-blue" href="{{url("usuario/evento/$evento->id")}}">

@@ -106,8 +106,8 @@
                                         <td class="text-left">{{$arquivo->titulo}}</td>
                                         <td class="text-left">{{$arquivo->link}}</td>
                                         <td>
-                                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>
-                                                Desativar </a>
+                                            <a href="{{url("administracao/evento/anexar/del/$arquivo->id")}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>
+                                                Excluir </a>
                                         </td>
                                     </tr>
                                 @empty
