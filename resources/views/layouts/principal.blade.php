@@ -46,13 +46,10 @@
                             <div class="menu_section">
                                 <!-- <h3>General</h3> -->
                                 <ul class="nav side-menu">
-                                    <li><a><i class="fa fa-clone"></i>Categoria  <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                                            <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                                        </ul>
-                                    </li>
                                     <li><a href="{{url('/administracao/eventos')}}" ><i class="fa fa-home"></i> Validar certificado <span class="fa fa-chevron-right"></span></a></li>
+                                    @if (!Auth::guest())
+                                        <li><a href="{{url('/usuario/eventos')}}" ><i class="fa fa-cogs"></i> Meus eventos <span class="fa fa-chevron-right"></span></a></li>
+                                    @endif
                                     <li><a href="{{url('/administracao/eventos')}}" ><i class="fa fa-cogs"></i> Administração <span class="fa fa-chevron-right"></span></a></li>
                                 </ul>
                             </div>

@@ -95,7 +95,7 @@ class InscricaoController extends Controller
 
 
     /**
-     * Lista dos eventos inscritos
+     * Detalhar evento
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -104,7 +104,7 @@ class InscricaoController extends Controller
 
         $evento = $this->evento->find($id_evento);
 
-        dd($evento);
+        return view('administracao.eventos.detalhar', compact('evento'));
 
     }
 
