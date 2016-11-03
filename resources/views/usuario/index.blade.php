@@ -1,4 +1,4 @@
-@extends('layouts.usuario')
+@extends('layouts.principal')
 
 @section('content')
     <!-- Custom Theme Style Principal -->
@@ -51,8 +51,11 @@
                         <i class="fa fa-tags"></i> <a href="#">TI</a>, <a href="#">php</a>, <a href="#">tecnologia</a>, <a href="#">rede </a>
                     </div>
                     <p>{!! $evento->descricao !!} </p>
-                    <a class="btn standard-hover-effect bg-red" href="evento/cancelar/{{$evento->id}}">
+                    <a class="btn standard-hover-effect bg-red" href="{{url("usuario/evento/cancelar/$evento->id")}}">
                         <span class="text">Cancelar Inscrição</span>
+                    </a>
+                    <a class="btn standard-hover-effect bg-blue" href="{{url("usuario/evento/materiais/$evento->id")}}">
+                        <span class="text">Materiais disponíveis</span>
                     </a>
                 </div>
                 <div class="col-sm-12">

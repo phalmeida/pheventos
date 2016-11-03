@@ -49,6 +49,7 @@
                                     <li><a href="{{url('/administracao/eventos')}}" ><i class="fa fa-home"></i> Validar certificado <span class="fa fa-chevron-right"></span></a></li>
                                     @if (!Auth::guest())
                                         <li><a href="{{url('/usuario/eventos')}}" ><i class="fa fa-cogs"></i> Meus eventos <span class="fa fa-chevron-right"></span></a></li>
+                                        <li><a href="{{url('/usuario/certificados')}}" ><i class="fa fa-cogs"></i> Meus certificados <span class="fa fa-chevron-right"></span></a></li>
                                     @endif
                                     <li><a href="{{url('/administracao/eventos')}}" ><i class="fa fa-cogs"></i> Administração <span class="fa fa-chevron-right"></span></a></li>
                                 </ul>

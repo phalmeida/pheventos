@@ -148,7 +148,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        /*
+        /**
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
@@ -156,20 +156,25 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        /*
+        /**
          * Application Datatables 
          */
         Yajra\Datatables\DatatablesServiceProvider::class,
 
-        /*
+        /**
          * Easy flash notifications
          */
         Laracasts\Flash\FlashServiceProvider::class,
 
-        /*
+        /**
          * Image Intervention
          */
         Intervention\Image\ImageServiceProvider::class,
+
+        /**
+         * TCPDF
+         */
+        Elibyy\TCPDF\ServiceProvider::class,
 
     ],
 
@@ -218,6 +223,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'PDF' => Elibyy\TCPDF\Facades\TCPDF::class,
 
     ],
 

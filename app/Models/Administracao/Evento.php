@@ -55,4 +55,14 @@ class Evento extends Model
 
     }
 
+    /**
+     * @return $this
+     */
+    public function anexos()
+    {
+
+        return $this->hasMany('App\Models\Administracao\Anexo', 'id_evento', 'id_evento');
+
+    }
+
 }

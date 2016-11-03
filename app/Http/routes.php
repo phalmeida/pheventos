@@ -78,6 +78,10 @@ Route::group(['prefix' => 'usuario', 'middleware' => 'auth', 'web'], function ($
     $route->get('eventos', 'Usuario\InscricaoController@eventos');
     $route->get('evento/cancelar/{id_evento}', 'Usuario\InscricaoController@cancelarInscricao');
     $route->get('evento/detalhar/{id_evento}', 'Usuario\InscricaoController@detalharEvento');
+    $route->get('certificados', 'Usuario\InscricaoController@listarCertificados');
+    $route->get('evento/materiais/{id_evento}', 'Usuario\InscricaoController@materiaisEvento');
+    $route->get('evento/materiais/baixar/{id}', 'Usuario\InscricaoController@baixarMaterial');
+    $route->get('certificado/baixar/{id_evento}/{id_usuario}', 'Usuario\InscricaoController@baixarCertificado');
 
 });
 
