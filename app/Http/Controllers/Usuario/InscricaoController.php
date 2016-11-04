@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Administracao\Evento;
 use App\Models\Administracao\Anexo;
+use App\Certificado;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use TCPDF as PDF;
@@ -18,6 +19,7 @@ class InscricaoController extends Controller
     protected $usuario;
     protected $anexo;
     protected $pdf;
+    protected $certificado;
 
     /**
      * InscricaoController constructor.
@@ -27,12 +29,17 @@ class InscricaoController extends Controller
      * @param User $usuario
      *
      */
-    public function __construct(Evento $evento, User $usuario, Anexo $anexo, PDF $pdf)
+    public function __construct(Evento $evento,
+                                User $usuario,
+                                Anexo $anexo,
+                                PDF $pdf,
+                                Certificado $certificado)
     {
         $this->evento = $evento;
         $this->usuario = $usuario;
         $this->anexo = $anexo;
         $this->pdf = $pdf;
+        $this->certificado = $certificado;
 
     }
 
@@ -165,7 +172,6 @@ class InscricaoController extends Controller
     public function baixarCertificado($id_evento, $id_usuario)
     {
 
-        $html = view('certificado.certificate')->render();
 
         $pdf = new PDF('L');
 
@@ -189,95 +195,32 @@ class InscricaoController extends Controller
 
         $pdf->Image($img_file, 0, 0, 298, 210, '', '', '', false, 300, '', false, false, 0);
 
+        $evento = $this->evento->find($id_evento);
 
-// define some HTML content with style
-        $html = <<<EOF
-<!-- EXAMPLE OF CSS STYLE -->
-<style>
-	h1 {
-		font-family: times;
-		font-size: 50   pt;
-		text-align: center;
-	}
+        $dados = (object)$this->certificado->where('id_evento', $id_evento)
+            ->where('id_user', Auth::user()->id)
+            ->get();
+        if(count($dados) < 1){
 
-	div.test {
-		color: #CC0000;
-		background-color: #FFFF66;
-		font-family: helvetica;
-		font-size: 16pt;
-		border-style: solid solid solid solid;
-		border-width: 2px 2px 2px 2px;
-		border-color: green #FF00FF blue red;
-		text-align: center;
-	}
+            $dadosForm['id_evento'] = $id_evento;
+            $dadosForm['id_user'] = Auth::user()->id;
+            $dadosForm['codigo_verificacao'] = str_random(10);
+            $dadosForm['dt_geracao'] = date('Y-m-d H:i:s');
+            //Faz o insert
+            $this->certificado->create($dadosForm);
 
-	.conteudo {
-		font-family: helvetica;
-		font-size: 16pt;
-		text-align: center;
-		
-	}
-	
-	.conteudo-justify {
+            $dados = $this->certificado->where('id_evento', $id_evento)
+                ->where('id_user', Auth::user()->id)
+                ->get();
+        }
 
-		text-align: justify;
-		
-	}
 
-	
-	.codigo{
+        $codigo_verificacao = $dados[0]['codigo_verificacao'];
+        $dt_geracao = $dados[0]['dt_geracao'];
+        $nome = Auth::user()->name;
 
-		text-align: center;
-		
-	}
-	
-	.codigo-verificar{
+        $html = view('certificado.certificate', compact('evento', 'codigo_verificacao', 'dt_geracao', 'nome'))->render();
 
-		text-align: center;
-		
-	}
-	
-	.recuo { text-indent:8em }
-
-	.certificado { 
-  width: 772px;
-  margin: 0 auto;
-}
-</style>
-<div class="certificado">
-<br>
-<h1 class="title">Certificado</h1>
-
-<p class="conteudo recuo">
-Certifico que <b> Nome Completo do Participante</b>, participou da palestra “<b>Nome Da Palestra</b>” realizada no dia  DD  de MM de AAAA.
-</p>
-</br>
-</br>
-</br>
-<p>
-<div>
-Data da geração do certificado:  dd/mm/yyyy hh:mm:ss
-</div>
-</br>
-<p>
-</br>
-<p>
-</br>
-<p>
-</br>
-
- <div class="codigo">
-Código do Certificado: <b>GSDF5SD1452DF</b>
- </div>
-
- <div class="codigo-verificar">
-Confira a autenticidade deste certificado em /certificado/validar.
- </div>
-</br>
-</div>
-EOF;
-
-        // output the HTML content
         $pdf->writeHTML($html, true, false, true, false, '');
         return $pdf->Output('certificado.pdf', 'D');
 

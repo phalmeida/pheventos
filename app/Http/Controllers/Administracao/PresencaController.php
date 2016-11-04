@@ -8,6 +8,7 @@ use App\Models\Administracao\Evento;
 use App\User;
 use App\Models\Administracao\Presenca;
 use Illuminate\Http\Request;
+use TCPDF as PDF;
 
 
 class PresencaController extends StandardController
@@ -59,6 +60,36 @@ class PresencaController extends StandardController
         $lista_usuario = $this->evento->find($id_evento);
 
         return view('administracao.presenca.lista', compact('lista_usuario'));
+
+
+    }
+
+    public function baixarListaUsuarios($id_evento)
+    {
+
+
+        $pdf = new PDF();
+
+        // set document information
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetAuthor('Philipe Allan Almeida');
+        $pdf->SetTitle('Certificado');
+// set default header data
+        $pdf->SetHeaderData(false, '', 'PHeventos', "Philipe - TCC PUC MINAS\nwww.philipealmeida.com.br");
+        // set margins
+        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+        $pdf->AddPage();
+
+        $lista_usuario = $this->evento->find($id_evento);
+        $html = view('administracao.presenca.baixar-lista', compact('lista_usuario'))->render();
+
+        $titulo = str_slug($lista_usuario->titulo, '_');
+
+        $pdf->writeHTML($html, true, false, true, false, '');
+        return $pdf->Output('lista_'.$titulo.'.pdf', 'D');
 
 
     }

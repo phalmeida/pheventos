@@ -50,8 +50,12 @@
                                     <td>
                                         @if( count($evento->usuarios) > 0)
                                             <a href="{{url("administracao/presenca/lista/$evento->id")}}"
-                                               class="btn btn-primary btn-xs"><i class="fa fa-list-ol"></i> Lista de
+                                               class="btn btn-success btn-xs"><i class="fa fa-list-ol"></i> Lista de
                                                 usuários </a>
+                                            <a href="{{url("administracao/presenca/lista/baixar/$evento->id")}}"
+                                               class="btn btn-primary btn-xs"><i class="fa fa-download"></i>
+                                                Baixar Lista
+                                            </a>
                                         @endif
                                     </td>
                                 </tr>
