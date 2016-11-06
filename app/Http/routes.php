@@ -90,5 +90,7 @@ Route::group(['prefix' => 'usuario', 'middleware' => 'auth', 'web'], function ($
 Route::auth();
 
 Route::get('/', 'HomeController@index');
+Route::get('certificado/validar', 'Usuario\InscricaoController@validarCertificado');
+Route::post('certificado/validar', 'Usuario\InscricaoController@consultarDadosCertificado');
 
 Route::get('/template', 'HomeController@template');

@@ -20,6 +20,7 @@ class InscricaoController extends Controller
     protected $anexo;
     protected $pdf;
     protected $certificado;
+    protected $request;
 
     /**
      * InscricaoController constructor.
@@ -33,13 +34,15 @@ class InscricaoController extends Controller
                                 User $usuario,
                                 Anexo $anexo,
                                 PDF $pdf,
-                                Certificado $certificado)
+                                Certificado $certificado,
+                                Request $request)
     {
         $this->evento = $evento;
         $this->usuario = $usuario;
         $this->anexo = $anexo;
         $this->pdf = $pdf;
         $this->certificado = $certificado;
+        $this->request = $request;
 
     }
 
@@ -200,7 +203,7 @@ class InscricaoController extends Controller
         $dados = (object)$this->certificado->where('id_evento', $id_evento)
             ->where('id_user', Auth::user()->id)
             ->get();
-        if(count($dados) < 1){
+        if (count($dados) < 1) {
 
             $dadosForm['id_evento'] = $id_evento;
             $dadosForm['id_user'] = Auth::user()->id;
@@ -225,6 +228,20 @@ class InscricaoController extends Controller
         return $pdf->Output('certificado.pdf', 'D');
 
 
+    }
+
+    public function validarCertificado()
+    {
+        return view('certificado.validar-certificado');
+    }
+
+    public function consultarDadosCertificado()
+    {
+
+        $codigo_verificacao = $this->request->get('codigo_verificacao');
+        $dadosCertificado = $this->certificado->where('codigo_verificacao' , $codigo_verificacao)->get();
+
+        return view('certificado.validar-certificado' , compact('codigo_verificacao' , 'dadosCertificado'));
     }
 
 }
