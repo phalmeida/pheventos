@@ -64,6 +64,9 @@ Route::group(['prefix' => 'administracao', 'middleware' => 'auth:admin', 'admin'
     $route->get('presenca/lista/baixar/{id_evento}', 'Administracao\PresencaController@baixarListaUsuarios');
     $route->post('presenca/salvar', 'Administracao\PresencaController@salvarPresenca');
 
+
+    $route->get('relatorio', 'Administracao\RelatorioController@index');
+
     //Rota inicial da Dashboard
     $route->get('/', 'Painel\PainelController@index');
 
