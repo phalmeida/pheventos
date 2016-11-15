@@ -35,8 +35,8 @@ class Evento extends Model
         'link_video' => 'required|min:3|max:200',
         //'imagem' => 'image|max:3000|mimes:jpg,png,jpeg',
         'id_palestrante' => 'required|integer',
-        'dt_inicio' => 'required|date|date_format:"d/m/Y"',
-        'dt_fim' => 'required|date|date_format:"d/m/Y"'
+        'dt_inicio' => 'required',
+        'dt_fim' => 'required'
     ];
 
 
