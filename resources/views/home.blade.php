@@ -29,10 +29,10 @@
                         <span class="star positive">
                             <span class="glyphicon glyphicon-star"></span>
                         </span>
-                        <span class="star negative">
+                        <span class="star positive">
                             <span class="glyphicon glyphicon-star"></span>
                         </span>
-                        <span class="star negative">
+                        <span class="star positive">
                             <span class="glyphicon glyphicon-star"></span>
                         </span>
                     </span>
